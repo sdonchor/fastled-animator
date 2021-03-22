@@ -1,0 +1,14 @@
+-dokończyć przesuwanie ramek DONE
+-komunikat o tym, że ramka niezapisana, przy zmianie ramki DONE
+-zmiana ramki w frameEditor przy switchFrame DONE
+-animacja poprzez setTimeout(duration) na frameEditorze
+-przycisk wyczyść wszystko DONE
+-przycisk gumka (#000000 brush) DONE
+-checkbox Prepend allOff? w codegen  DONE
+-checkbox Comments? w codegen  DONE
+-globalna zmiana duration
+-uładnić toolbar
+-DRY
+
+
+kiedyśtam: import z kodu
