@@ -13,6 +13,7 @@
               @move-frame="moveFrame"
               @modify-duration="modifyDuration"
               @default-duration-change="defaultDurationChange"
+              @duration-all="setAllDuration"
               :currentFrameIndex="currentFrameIndex"
               :frames="frames"
             ></FrameList>
@@ -143,6 +144,12 @@ export default class extends Vue {
       ];
       this.currentFrameIndex++;
     }
+    this.codeIteration++;
+  }
+  private setAllDuration(duration: number) {
+    this.frames.forEach((e) => {
+      e.duration = duration;
+    });
     this.codeIteration++;
   }
   private saveFrame() {

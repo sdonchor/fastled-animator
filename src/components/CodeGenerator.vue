@@ -49,7 +49,7 @@ export default class extends Vue {
     this.frames.forEach((f, idx) => {
       if (this.comments) code += `//FRAME ${++idx} (${f.duration}ms)\n`;
       f.strip.forEach((led, idx) => {
-        code += `leds[${idx}]CRGB(${led.color.r}, ${led.color.g}, ${led.color.b});\n`;
+        code += `leds[${idx}]=CRGB(${led.color.r}, ${led.color.g}, ${led.color.b});\n`;
       });
       code += 'FastLED.show();\n';
       code += `delay(${f.duration});\n`;

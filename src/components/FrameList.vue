@@ -18,9 +18,29 @@
           <td>{{ idx + 1 }}</td>
           <td>{{ f.duration }}</td>
           <td>
-            <v-icon color="green" @click="switchFrame(idx)">mdi-arrow-right-bold-box-outline</v-icon>
-            <v-icon color="red" @click.stop="deleteFrame(idx)">mdi-trash-can-outline</v-icon>
-            <v-icon @click.stop="openDurationDialog(idx)">mdi-pencil-outline</v-icon>
+            <v-tooltip left color="darkgray">
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon v-bind="attrs" v-on="on" color="green" @click="switchFrame(idx)"
+                  >mdi-arrow-right-bold-box-outline</v-icon
+                >
+              </template>
+              <span>Open in editor</span>
+            </v-tooltip>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon v-bind="attrs" v-on="on" color="red" @click.stop="deleteFrame(idx)"
+                  >mdi-trash-can-outline</v-icon
+                >
+              </template>
+              <span>Delete frame</span>
+            </v-tooltip>
+
+            <v-tooltip right>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon v-bind="attrs" v-on="on" @click.stop="openDurationDialog(idx)">mdi-timer-outline</v-icon>
+              </template>
+              <span>Edit duration</span>
+            </v-tooltip>
           </td>
         </tr>
       </tbody>
@@ -92,19 +112,21 @@
           ></v-text-field>
         </v-col>
         <v-col cols="3" height="100%" align="center" justify="center">
-          <v-tooltip right>
+          <v-tooltip left>
             <template v-slot:activator="{ on, attrs }">
-              <v-icon
-                v-bind="attrs"
-                v-on="on"
-                alt="Add a new frame"
-                class="addButton"
-                @click.stop="addFrame()"
-                color="success"
+              <v-icon v-bind="attrs" v-on="on" class="addButton" @click.stop="addFrame()" color="success"
                 >mdi-plus-circle</v-icon
               >
             </template>
             <span>Add a new frame</span>
+          </v-tooltip>
+          <v-tooltip right>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" class="addButton" @click.stop="setGlobalDuration()" color="white"
+                >mdi-earth</v-icon
+              >
+            </template>
+            <span>Change duration of all frames</span>
           </v-tooltip>
         </v-col>
       </v-row>
@@ -149,6 +171,10 @@ export default class extends Vue {
 
   private deleteFrame(idx: number): void {
     this.$emit('delete-frame', idx);
+  }
+
+  private setGlobalDuration(): void {
+    this.$emit('duration-all', this.duration);
   }
 
   private addFrame(): void {
