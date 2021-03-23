@@ -2,8 +2,9 @@
 
 During the making of my throw-detecting dice tray based on Arduino, I realised that I need a more effective way of making LED animations. So... I got carried away a little bit and here it is.
 
+This tool provides the user with an ability to define their LED strip's shape for easier visualisation and then create animations frame-by-frame. Arduino code is being automatically generated on the go.
+
 Last built version will be always hosted on my website: http://donchor.net/fastled-animator
-This tool provides the user with an ability to make LED animations frame-by-frame, and generate Arduino code for it.
 
 It is still a work in progress. More detailed documentation soon.
 
